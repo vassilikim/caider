@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:caider/auth/signup.dart';
 import 'package:caider/database/data.dart';
 import 'package:caider/database/users.dart';
@@ -36,7 +38,8 @@ class _LoginPageState extends State<LoginPage> {
         (user) =>
             user.toJson()['email'] == email &&
             user.toJson()['password'] == password,
-        orElse: () => User("null", "null", "null", "null", "null", []),
+        orElse: () =>
+            User("null", "null", "null", "null", "null", [], File('null')),
       );
       if (currentUser.toJson()["email"] == "null") {
         return MyMessageHandler.showSnackbar(

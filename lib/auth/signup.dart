@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:caider/auth/login.dart';
 import 'package:caider/database/data.dart';
 import 'package:caider/database/users.dart';
 import 'package:caider/widgets/auth_widgets.dart';
 import 'package:caider/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 bool justSignedUp = false;
 
@@ -28,6 +31,20 @@ class _SignUpPageState extends State<SignUpPage> {
   bool passwordVisible = false;
   bool confirmPasswordVisible = false;
 
+  final ImagePicker picker = ImagePicker();
+
+  File? _image;
+
+  Future<void> _pickImage(ImageSource source) async {
+    final pickedImage = await ImagePicker().pickImage(source: source);
+
+    if (pickedImage != null) {
+      setState(() {
+        _image = File(pickedImage.path);
+      });
+    }
+  }
+
   void signUp() async {
     if (firstName == '' ||
         lastName == '' ||
@@ -49,15 +66,23 @@ class _SignUpPageState extends State<SignUpPage> {
     } else {
       User currentUser = users.firstWhere(
         (user) => user.toJson()["email"] == email,
-        orElse: () => User("null", "null", "null", "null", "null", []),
+        orElse: () =>
+            User("null", "null", "null", "null", "null", [], File("null")),
       );
       if (currentUser.toJson()["email"] != "null") {
         return MyMessageHandler.showSnackbar(
             context, _scaffoldKey, 'This email address is already in use.');
       }
 
-      User newUser =
-          User(firstName, lastName, email, phoneNumber, password, []);
+      User newUser = User(
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        password,
+        [],
+        _image == null ? File("null") : _image!,
+      );
       users.add(newUser);
 
       setState(() {
@@ -94,12 +119,16 @@ class _SignUpPageState extends State<SignUpPage> {
                   Padding(
                     padding: const EdgeInsets.only(top: 60, bottom: 30),
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _pickImage(ImageSource.gallery);
+                      },
                       child: Stack(
                         children: [
-                          const CircleAvatar(
+                          CircleAvatar(
                             radius: 60,
-                            backgroundImage: AssetImage('./assets/profile.png'),
+                            backgroundImage: _image == null
+                                ? const AssetImage('./assets/profile.png')
+                                : FileImage(_image!) as ImageProvider,
                           ),
                           Positioned(
                             bottom: 0,

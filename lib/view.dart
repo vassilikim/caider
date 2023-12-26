@@ -8,8 +8,11 @@ class ViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 203, 222, 199),
-      body: Text(
-        user["email"],
+      body: Center(
+        child: CircleAvatar(
+          radius: 60,
+          backgroundImage: FileImage(user['profileImage']),
+        ),
       ),
     );
   }
