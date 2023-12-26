@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:caider/auth/login.dart';
 import 'package:flutter/material.dart';
 
 class StartPage extends StatefulWidget {
@@ -8,6 +11,33 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) =>
+              const LoginPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const begin = 0.0;
+            const end = 1.0;
+            const curve = Curves.easeOut;
+
+            var tween =
+                Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            var fadeAnimation = animation.drive(tween);
+
+            return FadeTransition(opacity: fadeAnimation, child: child);
+          },
+          transitionDuration: const Duration(milliseconds: 800),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
