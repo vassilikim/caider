@@ -1,4 +1,6 @@
 import 'package:caider/auth/login.dart';
+import 'package:caider/database/data.dart';
+import 'package:caider/database/users.dart';
 import 'package:caider/widgets/auth_widgets.dart';
 import 'package:caider/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
@@ -45,8 +47,19 @@ class _SignUpPageState extends State<SignUpPage> {
       return MyMessageHandler.showSnackbar(
           context, _scaffoldKey, 'The two passwords do not match.');
     } else {
-      print(email);
-      print(password);
+      User currentUser = users.firstWhere(
+        (user) => user.toJson()["email"] == email,
+        orElse: () => User("null", "null", "null", "null", "null", []),
+      );
+      if (currentUser.toJson()["email"] != "null") {
+        return MyMessageHandler.showSnackbar(
+            context, _scaffoldKey, 'This email address is already in use.');
+      }
+
+      User newUser =
+          User(firstName, lastName, email, phoneNumber, password, []);
+      users.add(newUser);
+
       setState(() {
         justSignedUp = true;
       });

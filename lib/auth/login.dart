@@ -1,4 +1,6 @@
 import 'package:caider/auth/signup.dart';
+import 'package:caider/database/data.dart';
+import 'package:caider/database/users.dart';
 import 'package:caider/view.dart';
 import 'package:caider/widgets/auth_widgets.dart';
 import 'package:caider/widgets/snackbar.dart';
@@ -30,9 +32,17 @@ class _LoginPageState extends State<LoginPage> {
       return MyMessageHandler.showSnackbar(
           context, _scaffoldKey, 'Invalid email address.');
     } else {
-      setState(() {
-        user["email"] = email;
-      });
+      User currentUser = users.firstWhere(
+        (user) =>
+            user.toJson()['email'] == email &&
+            user.toJson()['password'] == password,
+        orElse: () => User("null", "null", "null", "null", "null", []),
+      );
+      if (currentUser.toJson()["email"] == "null") {
+        return MyMessageHandler.showSnackbar(
+            context, _scaffoldKey, 'Wrong email or password.');
+      }
+      user = currentUser.toJson();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
         return const ViewPage();
       }));
