@@ -53,16 +53,22 @@ class _SignUpPageState extends State<SignUpPage> {
         password == '' ||
         confirmPassword == '') {
       return MyMessageHandler.showSnackbar(
-          context, _scaffoldKey, 'Please fill all the fields.');
+          context,
+          _scaffoldKey,
+          'Please fill all the fields.',
+          const Color.fromARGB(255, 238, 150, 150));
     } else if (!email.isValidEmail()) {
-      return MyMessageHandler.showSnackbar(
-          context, _scaffoldKey, 'Invalid email address.');
+      return MyMessageHandler.showSnackbar(context, _scaffoldKey,
+          'Invalid email address.', const Color.fromARGB(255, 238, 150, 150));
     } else if (!phoneNumber.isValidPhoneNumber()) {
-      return MyMessageHandler.showSnackbar(
-          context, _scaffoldKey, 'Invalid phone number.');
+      return MyMessageHandler.showSnackbar(context, _scaffoldKey,
+          'Invalid phone number.', const Color.fromARGB(255, 238, 150, 150));
     } else if (!(password == confirmPassword)) {
       return MyMessageHandler.showSnackbar(
-          context, _scaffoldKey, 'The two passwords do not match.');
+          context,
+          _scaffoldKey,
+          'The two passwords do not match.',
+          const Color.fromARGB(255, 238, 150, 150));
     } else {
       User currentUser = users.firstWhere(
         (user) => user.toJson()["email"] == email,
@@ -71,7 +77,10 @@ class _SignUpPageState extends State<SignUpPage> {
       );
       if (currentUser.toJson()["email"] != "null") {
         return MyMessageHandler.showSnackbar(
-            context, _scaffoldKey, 'This email address is already in use.');
+            context,
+            _scaffoldKey,
+            'This email address is already in use.',
+            const Color.fromARGB(255, 238, 150, 150));
       }
 
       User newUser = User(

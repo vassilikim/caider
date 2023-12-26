@@ -29,10 +29,13 @@ class _LoginPageState extends State<LoginPage> {
   void logIn() async {
     if (email == '' || password == '') {
       return MyMessageHandler.showSnackbar(
-          context, _scaffoldKey, 'Please fill all the fields.');
+          context,
+          _scaffoldKey,
+          'Please fill all the fields.',
+          const Color.fromARGB(255, 238, 150, 150));
     } else if (!email.isValidEmail()) {
-      return MyMessageHandler.showSnackbar(
-          context, _scaffoldKey, 'Invalid email address.');
+      return MyMessageHandler.showSnackbar(context, _scaffoldKey,
+          'Invalid email address.', const Color.fromARGB(255, 238, 150, 150));
     } else {
       User currentUser = users.firstWhere(
         (user) =>
@@ -43,7 +46,10 @@ class _LoginPageState extends State<LoginPage> {
       );
       if (currentUser.toJson()["email"] == "null") {
         return MyMessageHandler.showSnackbar(
-            context, _scaffoldKey, 'Wrong email or password.');
+            context,
+            _scaffoldKey,
+            'Wrong email or password.',
+            const Color.fromARGB(255, 238, 150, 150));
       }
       user = currentUser.toJson();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
@@ -58,7 +64,10 @@ class _LoginPageState extends State<LoginPage> {
     Future(() async {
       if (justSignedUp) {
         MyMessageHandler.showSnackbar(
-            context, _scaffoldKey, 'Login with your new account.');
+            context,
+            _scaffoldKey,
+            'Login with your new account.',
+            const Color.fromARGB(255, 168, 190, 163));
       }
       setState(() {
         justSignedUp = false;
