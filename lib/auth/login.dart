@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:caider/auth/signup.dart';
 import 'package:caider/database/data.dart';
 import 'package:caider/database/users.dart';
-import 'package:caider/view.dart';
+import 'package:caider/home.dart';
 import 'package:caider/widgets/auth_widgets.dart';
 import 'package:caider/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
       }
       user = currentUser.toJson();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return const ViewPage();
+        return const HomePage();
       }));
     }
   }
