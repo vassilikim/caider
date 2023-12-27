@@ -8,6 +8,8 @@ class User {
   final String password;
   final List<int> tasks;
   final File profileImage;
+  final int level;
+  final int points;
 
   User(
     this.firstName,
@@ -17,6 +19,8 @@ class User {
     this.password,
     this.tasks,
     this.profileImage,
+    this.level,
+    this.points,
   );
 
   // Convert user object to a Map
@@ -28,7 +32,9 @@ class User {
       'phoneNumber': phoneNumber,
       'password': password,
       'tasks': tasks,
-      'profileImage': profileImage
+      'profileImage': profileImage,
+      'level': level,
+      'points': points
     };
   }
 
@@ -41,6 +47,8 @@ class User {
         json['phoneNumber'],
         json['password'],
         json['tasks'] != null ? List<int>.from(json['tasks']) : [],
-        json['profileImage']);
+        json['profileImage'],
+        json['level'],
+        json['points']);
   }
 }

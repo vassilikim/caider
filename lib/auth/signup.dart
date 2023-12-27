@@ -72,8 +72,8 @@ class _SignUpPageState extends State<SignUpPage> {
     } else {
       User currentUser = users.firstWhere(
         (user) => user.toJson()["email"] == email,
-        orElse: () =>
-            User("null", "null", "null", "null", "null", [], File("null")),
+        orElse: () => User(
+            "null", "null", "null", "null", "null", [], File("null"), 0, 0),
       );
       if (currentUser.toJson()["email"] != "null") {
         return MyMessageHandler.showSnackbar(
@@ -83,15 +83,8 @@ class _SignUpPageState extends State<SignUpPage> {
             const Color.fromARGB(255, 238, 150, 150));
       }
 
-      User newUser = User(
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        password,
-        [],
-        _image == null ? File("null") : _image!,
-      );
+      User newUser = User(firstName, lastName, email, phoneNumber, password, [],
+          _image == null ? File("null") : _image!, 1, 0);
       users.add(newUser);
 
       setState(() {
@@ -135,6 +128,8 @@ class _SignUpPageState extends State<SignUpPage> {
                         children: [
                           CircleAvatar(
                             radius: 60,
+                            backgroundColor:
+                                const Color.fromARGB(255, 203, 222, 199),
                             backgroundImage: _image == null
                                 ? const AssetImage('./assets/profile.png')
                                 : FileImage(_image!) as ImageProvider,

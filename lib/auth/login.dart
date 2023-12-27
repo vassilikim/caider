@@ -41,8 +41,8 @@ class _LoginPageState extends State<LoginPage> {
         (user) =>
             user.toJson()['email'] == email &&
             user.toJson()['password'] == password,
-        orElse: () =>
-            User("null", "null", "null", "null", "null", [], File('null')),
+        orElse: () => User(
+            "null", "null", "null", "null", "null", [], File('null'), 0, 0),
       );
       if (currentUser.toJson()["email"] == "null") {
         return MyMessageHandler.showSnackbar(
