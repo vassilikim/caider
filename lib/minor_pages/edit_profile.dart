@@ -9,6 +9,8 @@ import 'package:caider/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+bool justProfileSaved = false;
+
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
 
@@ -90,6 +92,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
       user = updatedUser.toJson();
 
+      setState(() {
+        justProfileSaved = true;
+      });
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
         return const HomePage(
           initialIndex: 3,
