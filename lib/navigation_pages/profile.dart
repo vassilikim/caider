@@ -31,7 +31,8 @@ class _ProfilePageState extends State<ProfilePage> {
             context,
             _scaffoldKey,
             'Your profile has been updated.',
-            const Color.fromARGB(255, 168, 190, 163));
+            const Color.fromARGB(255, 168, 190, 163),
+            isInHomePage: true);
       }
       setState(() {
         justProfileSaved = false;

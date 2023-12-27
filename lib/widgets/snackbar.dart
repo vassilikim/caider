@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class MyMessageHandler {
   static void showSnackbar(
-      var context, var _scaffoldKey, String message, var color) {
+      var context, var _scaffoldKey, String message, var color,
+      {bool isInHomePage = false}) {
     _scaffoldKey.currentState!.hideCurrentSnackBar();
     _scaffoldKey.currentState!.showSnackBar(
       SnackBar(
@@ -25,7 +26,9 @@ class MyMessageHandler {
           ),
         ),
         margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height - 100,
+          bottom: !isInHomePage
+              ? MediaQuery.of(context).size.height - 100
+              : MediaQuery.of(context).size.height - 160,
           left: 10,
           right: 10,
         ),
