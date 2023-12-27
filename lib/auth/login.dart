@@ -53,7 +53,9 @@ class _LoginPageState extends State<LoginPage> {
       }
       user = currentUser.toJson();
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return const HomePage();
+        return const HomePage(
+          initialIndex: 0,
+        );
       }));
     }
   }

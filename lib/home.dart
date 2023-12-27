@@ -5,14 +5,15 @@ import 'package:caider/navigation_pages/to_do.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  final int initialIndex;
+  const HomePage({super.key, required this.initialIndex});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
+  late int _selectedIndex = widget.initialIndex;
 
   final List<Widget> _tabs = [
     const ExplorePage(),

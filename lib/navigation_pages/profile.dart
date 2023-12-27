@@ -1,4 +1,5 @@
 import 'package:caider/auth/login.dart';
+import 'package:caider/minor_pages/edit_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -99,7 +100,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context) {
+                            return const EditProfilePage();
+                          }));
+                        },
                         icon: const Icon(
                           Icons.edit,
                           color: Colors.black,

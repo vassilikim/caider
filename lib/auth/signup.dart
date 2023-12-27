@@ -120,13 +120,15 @@ class _SignUpPageState extends State<SignUpPage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 60, bottom: 30),
-                    child: MaterialButton(
-                      onPressed: () {
-                        _pickImage(ImageSource.gallery);
-                      },
-                      child: Stack(
-                        children: [
-                          CircleAvatar(
+                    child: Stack(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _image = null;
+                            });
+                          },
+                          child: CircleAvatar(
                             radius: 60,
                             backgroundColor:
                                 const Color.fromARGB(255, 203, 222, 199),
@@ -134,9 +136,14 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ? const AssetImage('./assets/profile.png')
                                 : FileImage(_image!) as ImageProvider,
                           ),
-                          Positioned(
-                            bottom: 0,
-                            right: 0,
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          right: 0,
+                          child: GestureDetector(
+                            onTap: () {
+                              _pickImage(ImageSource.gallery);
+                            },
                             child: Container(
                               padding: const EdgeInsets.all(4),
                               decoration: const BoxDecoration(
@@ -149,8 +156,8 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                   Column(
