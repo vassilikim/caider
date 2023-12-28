@@ -6,7 +6,7 @@ class User {
   final String email;
   final String phoneNumber;
   final String password;
-  final List<int> tasks;
+  final List<dynamic> tasks;
   final File profileImage;
   final int level;
   final int points;
