@@ -81,6 +81,7 @@ class _ExplorePageState extends State<ExplorePage> {
                                       MaterialPageRoute(builder: (context) {
                                     return TaskPage(
                                       currentTask: exploreTasks[index],
+                                      pageFrom: 0,
                                     );
                                   }));
                                 },

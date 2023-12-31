@@ -8,7 +8,7 @@ class MyMessageHandler {
     _scaffoldKey.currentState!.showSnackBar(
       SnackBar(
         behavior: SnackBarBehavior.floating,
-        duration: const Duration(seconds: 1),
+        duration: const Duration(seconds: 2),
         backgroundColor: color,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
@@ -28,7 +28,7 @@ class MyMessageHandler {
         margin: EdgeInsets.only(
           bottom: !isInHomePage
               ? MediaQuery.of(context).size.height - 100
-              : MediaQuery.of(context).size.height - 160,
+              : MediaQuery.of(context).size.height - 170,
           left: 10,
           right: 10,
         ),

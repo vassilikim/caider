@@ -13,7 +13,9 @@ bool justAcceptedTask = false;
 
 class TaskPage extends StatefulWidget {
   final Task currentTask;
-  const TaskPage({super.key, required this.currentTask});
+  final int pageFrom;
+  const TaskPage(
+      {super.key, required this.currentTask, required this.pageFrom});
 
   @override
   State<TaskPage> createState() => _TaskPageState();
@@ -86,8 +88,8 @@ class _TaskPageState extends State<TaskPage> {
         }
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) {
-          return const HomePage(
-            initialIndex: 0,
+          return HomePage(
+            initialIndex: widget.pageFrom,
           );
         }));
       },
@@ -98,6 +100,7 @@ class _TaskPageState extends State<TaskPage> {
           body: Center(
             child: SingleChildScrollView(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
                     padding:
@@ -109,8 +112,8 @@ class _TaskPageState extends State<TaskPage> {
                           onPressed: () {
                             Navigator.pushReplacement(context,
                                 MaterialPageRoute(builder: (context) {
-                              return const HomePage(
-                                initialIndex: 0,
+                              return HomePage(
+                                initialIndex: widget.pageFrom,
                               );
                             }));
                           },
@@ -205,30 +208,34 @@ class _TaskPageState extends State<TaskPage> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 50),
-                    child: Container(
-                      height: 46,
-                      width: 141,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 131, 159, 128),
-                        borderRadius: BorderRadius.circular(50),
-                      ),
-                      child: TextButton(
-                        onPressed: () {
-                          acceptTask();
-                        },
-                        child: const Text(
-                          'Accept',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontSize: 16,
+                  widget.pageFrom == 0
+                      ? Padding(
+                          padding: const EdgeInsets.only(bottom: 50),
+                          child: Container(
+                            height: 46,
+                            width: 141,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 131, 159, 128),
+                              borderRadius: BorderRadius.circular(50),
+                            ),
+                            child: TextButton(
+                              onPressed: () {
+                                acceptTask();
+                              },
+                              child: const Text(
+                                'Accept',
+                                style: TextStyle(
+                                  fontFamily: 'Roboto',
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ),
+                        )
+                      : const SizedBox(
+                          height: 20,
+                        )
                 ],
               ),
             ),

@@ -12,7 +12,13 @@ List<User> users = [
       "test",
       [
         {
-          "task": Task("Task 1", "test desc", 37.7749, -122.4194, 40, 1),
+          "task": Task(
+              "Task 1",
+              "We are looking for a skilled Flutter developer to implement a new feature in Project X. The task involves creating a dynamic user interface that fetches data from our backend server and displays it in an organized and visually appealing manner. You will need to use advanced state management techniques and integrate API calls to ensure seamless data retrieval and updates. The feature should also maintain responsiveness across various device sizes. Attention to detail and adherence to design specifications are crucial. The successful completion of this task will significantly enhance the overall functionality and user experience of Project X.",
+              37.7749,
+              -122.4194,
+              40,
+              1),
           "status": "to_do"
         }
       ],
