@@ -4,6 +4,7 @@ import 'package:caider/auth/login.dart';
 import 'package:caider/database/data.dart';
 import 'package:caider/database/users.dart';
 import 'package:caider/home.dart';
+import 'package:caider/minor_pages/create_memory.dart';
 import 'package:caider/minor_pages/task_page.dart';
 import 'package:caider/widgets/snackbar.dart';
 import 'package:flutter/material.dart';
@@ -82,10 +83,23 @@ class _ToDoPageState extends State<ToDoPage> {
             'The task was successfully removed.',
             const Color.fromARGB(255, 168, 190, 163),
             isInHomePage: true);
+
+        setState(() {
+          justRemovedTask = false;
+        });
+      } else if (justCompletedTask) {
+        MyMessageHandler.showSnackbar(
+            context,
+            _scaffoldKey,
+            'You completed the task + $pointsGained points!',
+            const Color.fromARGB(255, 168, 190, 163),
+            isInHomePage: true);
+
+        setState(() {
+          justCompletedTask = false;
+          pointsGained = 0;
+        });
       }
-      setState(() {
-        justRemovedTask = false;
-      });
     });
   }
 
@@ -162,7 +176,14 @@ class _ToDoPageState extends State<ToDoPage> {
                                         color: Colors.black),
                                   ),
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return CreateMemoryPage(
+                                          currentTask: toDoTasks[index],
+                                        );
+                                      }));
+                                    },
                                     icon: const Icon(
                                       Icons.done_all,
                                       color: Colors.black,

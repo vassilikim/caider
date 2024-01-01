@@ -172,7 +172,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 30, top: 6),
+                            padding: const EdgeInsets.only(
+                                left: 30, top: 6, right: 30),
                             child: TextFormField(
                               onChanged: (value) {
                                 firstName = value;
@@ -200,7 +201,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 30, top: 6),
+                            padding: const EdgeInsets.only(
+                                left: 30, top: 6, right: 30),
                             child: TextFormField(
                               onChanged: (value) {
                                 lastName = value;
@@ -228,7 +230,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 30, top: 6),
+                            padding: const EdgeInsets.only(
+                                left: 30, top: 6, right: 30),
                             child: TextFormField(
                               onChanged: (value) {
                                 email = value;
@@ -257,7 +260,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 30, top: 6),
+                            padding: const EdgeInsets.only(
+                                left: 30, top: 6, right: 30),
                             child: TextFormField(
                               onChanged: (value) {
                                 phoneNumber = value;
@@ -286,7 +290,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 30, top: 6),
+                            padding: const EdgeInsets.only(
+                                left: 30, top: 6, right: 5),
                             child: TextFormField(
                               onChanged: (value) {
                                 password = value;
@@ -331,7 +336,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             borderRadius: BorderRadius.circular(50),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 30, top: 6),
+                            padding: const EdgeInsets.only(
+                                left: 30, top: 6, right: 5),
                             child: TextFormField(
                               onChanged: (value) {
                                 confirmPassword = value;

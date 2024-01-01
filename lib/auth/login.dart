@@ -111,7 +111,8 @@ class _LoginPageState extends State<LoginPage> {
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 30, top: 6),
+                              padding: const EdgeInsets.only(
+                                  left: 30, top: 6, right: 30),
                               child: TextFormField(
                                 onChanged: (value) {
                                   email = value;
@@ -140,7 +141,8 @@ class _LoginPageState extends State<LoginPage> {
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 30, top: 6),
+                              padding: const EdgeInsets.only(
+                                  left: 30, top: 6, right: 5),
                               child: TextFormField(
                                 onChanged: (value) {
                                   password = value;
