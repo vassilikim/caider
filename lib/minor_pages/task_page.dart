@@ -25,10 +25,7 @@ class _TaskPageState extends State<TaskPage> {
   final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
       GlobalKey<ScaffoldMessengerState>();
 
-  void launchGoogleMaps(double latitude, double longitude) async {
-    final url =
-        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
-
+  void launchGoogleMaps(String url) async {
     if (await canLaunchUrlString(url)) {
       await launchUrlString(url);
     } else {
@@ -130,12 +127,18 @@ class _TaskPageState extends State<TaskPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 35, bottom: 25),
-                        child: Text(
-                          widget.currentTask.toJson()['name'],
-                          style: const TextStyle(
-                            fontFamily: 'Roboto',
-                            fontSize: 34,
+                        padding: const EdgeInsets.only(
+                            left: 25, bottom: 25, right: 25),
+                        child: SizedBox(
+                          width: 300,
+                          child: Text(
+                            widget.currentTask.toJson()['name'],
+                            style: const TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 34,
+                              overflow: TextOverflow.visible,
+                            ),
+                            softWrap: true,
                           ),
                         ),
                       ),
@@ -175,9 +178,7 @@ class _TaskPageState extends State<TaskPage> {
                     padding: const EdgeInsets.only(bottom: 30),
                     child: GestureDetector(
                       onTap: () {
-                        launchGoogleMaps(
-                            widget.currentTask.toJson()['latitude'],
-                            widget.currentTask.toJson()['longitude']);
+                        launchGoogleMaps(widget.currentTask.toJson()['url']);
                       },
                       child: Container(
                         height: 250,
@@ -187,24 +188,15 @@ class _TaskPageState extends State<TaskPage> {
                               Radius.circular(50),
                             ),
                             color: Colors.white),
-                        // child: FlutterMap(
-                        //   options: MapOptions(
-                        //     interactionOptions:
-                        //         const InteractionOptions(flags: InteractiveFlag.none),
-                        //     initialCenter: LatLng(
-                        //         widget.currentTask.toJson()['latitude'],
-                        //         widget.currentTask.toJson()['longitude']),
-                        //     initialZoom: 9.2,
-                        //     backgroundColor: const Color.fromARGB(255, 203, 222, 199),
-                        //   ),
-                        //   children: [
-                        //     TileLayer(
-                        //       urlTemplate:
-                        //           'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                        //       userAgentPackageName: 'com.example.app',
-                        //     ),
-                        //   ],
-                        // ),
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(50),
+                          ),
+                          child: Image.asset(
+                            './assets/maps/${widget.currentTask.toJson()['map']}',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
                     ),
                   ),

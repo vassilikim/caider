@@ -167,13 +167,16 @@ class _ToDoPageState extends State<ToDoPage> {
                                       color: Colors.black,
                                     ),
                                   ),
-                                  Text(
-                                    toDoTasks[index].toJson()['name'],
-                                    style: const TextStyle(
-                                        fontFamily: 'Roboto',
-                                        fontSize: 17,
-                                        overflow: TextOverflow.ellipsis,
-                                        color: Colors.black),
+                                  SizedBox(
+                                    width: 160,
+                                    child: Text(
+                                      toDoTasks[index].toJson()['name'],
+                                      style: const TextStyle(
+                                          fontFamily: 'Roboto',
+                                          fontSize: 17,
+                                          overflow: TextOverflow.ellipsis,
+                                          color: Colors.black),
+                                    ),
                                   ),
                                   IconButton(
                                     onPressed: () {

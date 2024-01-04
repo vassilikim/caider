@@ -105,16 +105,19 @@ class _ExplorePageState extends State<ExplorePage> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 40),
-                                    child: Text(
-                                      exploreTasks[index].toJson()['name'],
-                                      style: TextStyle(
-                                          fontFamily: 'Roboto',
-                                          fontSize: 17,
-                                          overflow: TextOverflow.ellipsis,
-                                          color: isLocked
-                                              ? Colors.grey
-                                              : Colors.black),
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: SizedBox(
+                                      width: 160,
+                                      child: Text(
+                                        exploreTasks[index].toJson()['name'],
+                                        style: TextStyle(
+                                            fontFamily: 'Roboto',
+                                            fontSize: 17,
+                                            overflow: TextOverflow.ellipsis,
+                                            color: isLocked
+                                                ? Colors.grey
+                                                : Colors.black),
+                                      ),
                                     ),
                                   ),
                                   isLocked

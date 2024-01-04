@@ -1,28 +1,28 @@
 class Task {
   final String name;
   final String description;
-  final double latitude;
-  final double longitude;
+  final String map;
   final int reward;
   final int level;
+  final String url;
 
   Task(
     this.name,
     this.description,
-    this.latitude,
-    this.longitude,
+    this.map,
     this.reward,
     this.level,
+    this.url,
   );
 
   Map<String, dynamic> toJson() {
     return {
       'name': name,
       'description': description,
-      'latitude': latitude,
-      'longitude': longitude,
+      'map': map,
       'reward': reward,
       'level': level,
+      'url': url,
     };
   }
 
@@ -30,10 +30,10 @@ class Task {
     return Task(
       json['name'],
       json['description'],
-      json['latitude'],
-      json['longitude'],
+      json['map'],
       json['reward'],
       json['level'],
+      json['url'],
     );
   }
 }
