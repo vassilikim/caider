@@ -1,5 +1,7 @@
 import 'dart:io';
+import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:caider/auth/login.dart';
 import 'package:caider/database/data.dart';
 import 'package:caider/database/users.dart';
@@ -7,6 +9,7 @@ import 'package:caider/home.dart';
 import 'package:caider/minor_pages/create_memory.dart';
 import 'package:caider/minor_pages/task_page.dart';
 import 'package:caider/widgets/snackbar.dart';
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 
 bool justRemovedTask = false;
@@ -26,6 +29,9 @@ class _ToDoPageState extends State<ToDoPage> {
       .where((task) => task["status"] == "to_do")
       .map((task) => task['task'])
       .toList();
+
+  final _controllerConfetti =
+      ConfettiController(duration: const Duration(seconds: 3));
 
   void removeTask(int taskIndex) async {
     User currentUser = users.firstWhere(
@@ -88,6 +94,9 @@ class _ToDoPageState extends State<ToDoPage> {
           justRemovedTask = false;
         });
       } else if (justCompletedTask) {
+        AudioPlayer().play(AssetSource('congrats.mp3'));
+        _controllerConfetti.play();
+
         MyMessageHandler.showSnackbar(
             context,
             _scaffoldKey,
@@ -109,101 +118,126 @@ class _ToDoPageState extends State<ToDoPage> {
       key: _scaffoldKey,
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 203, 222, 199),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 60, left: 25, right: 25),
-            child: Column(
-              children: [
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+        body: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              left: MediaQuery.of(context).size.width * 0.5,
+              child: ConfettiWidget(
+                confettiController: _controllerConfetti,
+                blastDirectionality: BlastDirectionality.explosive,
+                blastDirection: -pi / 2,
+                emissionFrequency: 0.05,
+                numberOfParticles: 50,
+                gravity: 1,
+                colors: const [
+                  Colors.green,
+                  Colors.blue,
+                  Colors.pink,
+                  Colors.orange,
+                  Colors.purple
+                ],
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 60, left: 25, right: 25),
+                child: Column(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10),
-                      child: Text(
-                        'Accepted Tasks',
-                        style: TextStyle(fontFamily: 'Roboto', fontSize: 34),
+                    const Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Text(
+                            'Accepted Tasks',
+                            style:
+                                TextStyle(fontFamily: 'Roboto', fontSize: 34),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: toDoTasks.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return TaskPage(
+                                    currentTask: toDoTasks[index],
+                                    pageFrom: 1,
+                                  );
+                                }));
+                              },
+                              child: Container(
+                                height: 95,
+                                width: 293,
+                                decoration: const BoxDecoration(
+                                  color: Color.fromARGB(255, 234, 253, 238),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(50),
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 25),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {
+                                          removeTask(index);
+                                        },
+                                        icon: const Icon(
+                                          Icons.close,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: 160,
+                                        child: Text(
+                                          toDoTasks[index].toJson()['name'],
+                                          style: const TextStyle(
+                                              fontFamily: 'Roboto',
+                                              fontSize: 17,
+                                              overflow: TextOverflow.ellipsis,
+                                              color: Colors.black),
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {
+                                          Navigator.pushReplacement(context,
+                                              MaterialPageRoute(
+                                                  builder: (context) {
+                                            return CreateMemoryPage(
+                                              currentTask: toDoTasks[index],
+                                            );
+                                          }));
+                                        },
+                                        icon: const Icon(
+                                          Icons.done_all,
+                                          color: Colors.black,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: toDoTasks.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 20),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pushReplacement(context,
-                                MaterialPageRoute(builder: (context) {
-                              return TaskPage(
-                                currentTask: toDoTasks[index],
-                                pageFrom: 1,
-                              );
-                            }));
-                          },
-                          child: Container(
-                            height: 95,
-                            width: 293,
-                            decoration: const BoxDecoration(
-                              color: Color.fromARGB(255, 234, 253, 238),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(50),
-                              ),
-                            ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 25),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      removeTask(index);
-                                    },
-                                    icon: const Icon(
-                                      Icons.close,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 160,
-                                    child: Text(
-                                      toDoTasks[index].toJson()['name'],
-                                      style: const TextStyle(
-                                          fontFamily: 'Roboto',
-                                          fontSize: 17,
-                                          overflow: TextOverflow.ellipsis,
-                                          color: Colors.black),
-                                    ),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      Navigator.pushReplacement(context,
-                                          MaterialPageRoute(builder: (context) {
-                                        return CreateMemoryPage(
-                                          currentTask: toDoTasks[index],
-                                        );
-                                      }));
-                                    },
-                                    icon: const Icon(
-                                      Icons.done_all,
-                                      color: Colors.black,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

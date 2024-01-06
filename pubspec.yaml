@@ -39,6 +39,8 @@ dependencies:
   flutter_map: ^6.1.0
   url_launcher: ^6.2.2
   latlong2: ^0.9.0
+  confetti: ^0.7.0
+  audioplayers: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +78,7 @@ flutter:
     - assets/maps/task8.png
     - assets/maps/task9.png
     - assets/maps/task10.png
+    - assets/congrats.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
