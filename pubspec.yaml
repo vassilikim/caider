@@ -66,7 +66,16 @@ flutter:
     - assets/logo.png
     - assets/login_lock.png
     - assets/profile.png
-    - assets/maps/
+    - assets/maps/task1.png
+    - assets/maps/task2.png
+    - assets/maps/task3.png
+    - assets/maps/task4.png
+    - assets/maps/task5.png
+    - assets/maps/task6.png
+    - assets/maps/task7.png
+    - assets/maps/task8.png
+    - assets/maps/task9.png
+    - assets/maps/task10.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -77,6 +77,14 @@ class _TaskPageState extends State<TaskPage> {
 
   @override
   Widget build(BuildContext context) {
+    List<dynamic> memory = user['tasks']
+        .where((task) =>
+            task["status"] == "completed" &&
+            task['task'].toJson()['name'] ==
+                widget.currentTask.toJson()['name'])
+        .map((task) => task['memory'])
+        .toList();
+
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) async {
@@ -225,9 +233,85 @@ class _TaskPageState extends State<TaskPage> {
                             ),
                           ),
                         )
-                      : const SizedBox(
-                          height: 20,
-                        )
+                      : widget.pageFrom == 1
+                          ? const SizedBox(
+                              height: 20,
+                            )
+                          : widget.pageFrom == 2
+                              ? Column(
+                                  children: [
+                                    const Text(
+                                      'My memory',
+                                      style: TextStyle(
+                                          fontSize: 22, fontFamily: 'Roboto'),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20),
+                                      child: Container(
+                                        decoration: const BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(50),
+                                          ),
+                                        ),
+                                        child: SizedBox(
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                height: 200,
+                                                width: 180,
+                                                decoration: const BoxDecoration(
+                                                  color: Color.fromARGB(
+                                                      255, 203, 222, 199),
+                                                ),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(50),
+                                                    bottomLeft:
+                                                        Radius.circular(50),
+                                                  ),
+                                                  child: Image.file(
+                                                    memory[0]['image'],
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width -
+                                                    180,
+                                                height: 200,
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 25,
+                                                      vertical: 20),
+                                                  child: Center(
+                                                    child: Text(
+                                                      memory[0]['text'],
+                                                      maxLines: 6,
+                                                      style: const TextStyle(
+                                                        fontFamily: 'Roboto',
+                                                        fontSize: 17,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : const SizedBox(),
                 ],
               ),
             ),

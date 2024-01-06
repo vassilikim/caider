@@ -90,7 +90,7 @@ class _CreateMemoryPageState extends State<CreateMemoryPage> {
 
     if (finalPoints >= 100) {
       finalLevel = finalLevel + 1;
-      finalPoints = 100 - finalPoints;
+      finalPoints = finalPoints - 100;
     }
 
     User updatedUser = User(
