@@ -198,14 +198,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20),
                           child: Container(
-                            height: 49,
+                            height: 55,
                             width: 252,
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 234, 253, 238),
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 30, top: 6),
+                              padding: const EdgeInsets.only(
+                                  left: 30, top: 6, right: 30),
                               child: TextFormField(
                                 controller: firstNameController,
                                 decoration: const InputDecoration(
@@ -224,14 +225,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20),
                           child: Container(
-                            height: 49,
+                            height: 55,
                             width: 252,
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 234, 253, 238),
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 30, top: 6),
+                              padding: const EdgeInsets.only(
+                                  left: 30, top: 6, right: 30),
                               child: TextFormField(
                                 controller: lastNameController,
                                 decoration: const InputDecoration(
@@ -250,14 +252,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20),
                           child: Container(
-                            height: 49,
+                            height: 55,
                             width: 252,
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 234, 253, 238),
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 30, top: 6),
+                              padding: const EdgeInsets.only(
+                                  left: 30, top: 6, right: 30),
                               child: TextFormField(
                                 controller: emailController,
                                 keyboardType: TextInputType.emailAddress,
@@ -277,14 +280,15 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 20),
                           child: Container(
-                            height: 49,
+                            height: 55,
                             width: 252,
                             decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 234, 253, 238),
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 30, top: 6),
+                              padding: const EdgeInsets.only(
+                                  left: 30, top: 6, right: 30),
                               child: TextFormField(
                                 controller: phoneNumberController,
                                 keyboardType: TextInputType.number,

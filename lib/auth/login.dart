@@ -92,7 +92,8 @@ class _LoginPageState extends State<LoginPage> {
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 40),
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.065),
                       child: Image.asset(
                         'assets/login_lock.png',
                         width: 280,
@@ -102,7 +103,9 @@ class _LoginPageState extends State<LoginPage> {
                     Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
+                          padding: EdgeInsets.only(
+                              bottom:
+                                  MediaQuery.of(context).size.height * 0.016),
                           child: Container(
                             height: 65,
                             width: 252,
@@ -180,8 +183,8 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 55,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.08,
                 ),
                 Container(
                   height: 46,
@@ -206,7 +209,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(
                   height: 70,
-                  width: 181,
+                  width: 200,
                   child: Center(
                     child: TextButton(
                       onPressed: () {

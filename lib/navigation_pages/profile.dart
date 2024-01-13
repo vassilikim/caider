@@ -76,7 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               Text(
                                 'Logout',
                                 style: TextStyle(
-                                    fontFamily: 'Roboto', fontSize: 16),
+                                    fontFamily: 'Roboto', fontSize: 14),
                               ),
                               Icon(
                                 Icons.logout_rounded,
@@ -118,7 +118,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.symmetric(vertical: 20),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,

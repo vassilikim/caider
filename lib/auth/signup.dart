@@ -165,7 +165,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: Container(
-                          height: 49,
+                          height: 55,
                           width: 252,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 234, 253, 238),
@@ -194,7 +194,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: Container(
-                          height: 49,
+                          height: 55,
                           width: 252,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 234, 253, 238),
@@ -223,7 +223,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: Container(
-                          height: 49,
+                          height: 54,
                           width: 252,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 234, 253, 238),
@@ -253,7 +253,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: Container(
-                          height: 49,
+                          height: 54,
                           width: 252,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 234, 253, 238),
@@ -283,7 +283,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: Container(
-                          height: 49,
+                          height: 54,
                           width: 252,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 234, 253, 238),
@@ -329,7 +329,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: 20),
                         child: Container(
-                          height: 49,
+                          height: 54,
                           width: 252,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 234, 253, 238),

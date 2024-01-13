@@ -26,11 +26,7 @@ class _TaskPageState extends State<TaskPage> {
       GlobalKey<ScaffoldMessengerState>();
 
   void launchGoogleMaps(String url) async {
-    if (await canLaunchUrlString(url)) {
-      await launchUrlString(url);
-    } else {
-      throw 'Could not launch Google Maps';
-    }
+    await launchUrlString(url);
   }
 
   void acceptTask() async {

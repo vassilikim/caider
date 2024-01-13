@@ -44,7 +44,9 @@ class _StartPageState extends State<StartPage> {
         backgroundColor: const Color.fromARGB(255, 203, 222, 199),
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 60),
+            padding: EdgeInsets.symmetric(
+              vertical: MediaQuery.of(context).size.height * 0.1,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -56,8 +58,8 @@ class _StartPageState extends State<StartPage> {
                       fontSize: 57,
                       fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.03,
                 ),
                 Image.asset(
                   'assets/logo.png',
@@ -84,8 +86,8 @@ class _StartPageState extends State<StartPage> {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.03,
                 ),
               ],
             ),
