@@ -39,7 +39,7 @@ List<Task> tasks = [
       "Explore the Ancient Ruins of Olympia",
       "Volunteer with a group that excavates and preserves the ancient Olympic Games site in Olympia. Help uncover artifacts, document findings, and share the history of ancient Greece.",
       "task2.png",
-      30,
+      50,
       1,
       "https://www.google.com/maps/place/%CE%91%CF%81%CF%87%CE%B1%CE%B9%CE%BF%CE%BB%CE%BF%CE%B3%CE%B9%CE%BA%CF%8C%CF%82+%CE%A7%CF%8E%CF%81%CE%BF%CF%82+%CE%9F%CE%BB%CF%85%CE%BC%CF%80%CE%AF%CE%B1%CF%82/@37.6387037,17.4112701,7z/data=!4m10!1m2!2m1!1sAncient+Ruins+of+Olympia!3m6!1s0x136092ef583187f3:0x998b4c652e12df7!8m2!3d37.6384588!4d21.6298796!15sChhBbmNpZW50IFJ1aW5zIG9mIE9seW1waWFaGiIYYW5jaWVudCBydWlucyBvZiBvbHltcGlhkgENaGlzdG9yaWNfc2l0ZZoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VOU05VNWlaR04zRUFF4AEA!16zL20vMDFzd2xm?entry=ttu"),
   Task(
@@ -60,7 +60,7 @@ List<Task> tasks = [
       "Document the Caves of Petralona",
       "Volunteer with a group that documents and explores the ancient caves of Petralona, located near Thessaloniki. Help record and analyze cave formations, fossils, and archaeological findings.",
       "task5.png",
-      40,
+      60,
       2,
       "https://www.google.com/maps/place/%CE%A3%CF%80%CE%AE%CE%BB%CE%B1%CE%B9%CE%BF+%CE%A0%CE%B5%CF%84%CF%81%CE%B1%CE%BB%CF%8E%CE%BD%CF%89%CE%BD/@40.3747976,21.0587311,8z/data=!4m10!1m2!2m1!1sCaves+of+Petralona!3m6!1s0x14a1bce4b1962f07:0x1407122ac7611f40!8m2!3d40.3748923!4d23.1679928!15sChJDYXZlcyBvZiBQZXRyYWxvbmFaFCISY2F2ZXMgb2YgcGV0cmFsb25hkgETaGlzdG9yaWNhbF9sYW5kbWFya-ABAA!16s%2Fm%2F0j45cz2?entry=ttu"),
   Task(
